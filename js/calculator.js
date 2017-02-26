@@ -196,7 +196,7 @@
 
                 function log2() {
                         expression.textContent =  `log2(${screen.textContent})`;
-                        screen.textContent = (screen.textContent == 0) ? 0 : Math.log10(parseFloat(screen.textContent));
+                        screen.textContent = (screen.textContent == 0) ? 0 : Math.log2(parseFloat(screen.textContent));
                         checkForPotentialError(screen.textContent);
                         
                         //produce a wave effect
