@@ -53,7 +53,6 @@
                 //run when an operator is pressed 3 + 
                 function storeLastNumber(operatorElement){
                     if(!isNewEntry){
-                        console.log(lastNumber);
                         total = parseFloat(lastNumber); lastNumber = "";
                     }
                     
@@ -67,11 +66,8 @@
                                
 
                 function performBasicOp(){
-                    console.log(lastNumber);
-                    console.log(total);
+                    
                     if(op == '+'){
-                        console.log(total);
-                        console.log(lastNumber);
                          total = add(total,parseFloat(lastNumber));
                     }
                     else if(op == "-"){
@@ -86,7 +82,7 @@
                     else{
                         total = parseFloat(lastNumber);
                     }
-                    // console.log(total);
+                    
                     return total;
                 }
                //=
@@ -138,16 +134,9 @@
                 //Scientific operations
                 function cos() {
                         expression.textContent =  `cos(${screen.textContent})`;
-                        let value =  Math.cos(parseFloat(screen.textContent) * Math.PI/180);
-
-                        if(Number.isNaN(value)){
-                            screen.textContent = "You broke it!";
-                            total = 0;
-                        }else{
-                            screen.textContent = value;
-                            total = parseFloat(screen.textContent);
-                            isNewEntry = true;
-                        } 
+                        screen.textContent = Math.sin(parseFloat(screen.textContent) * Math.PI/180);
+                        total = parseFloat(screen.textContent);
+                        isNewEntry = true;
 
                         //produce a wave effect
                         this.querySelector('.waveButton').classList.add('ripple');
@@ -277,14 +266,12 @@
                     screen.textContent = (screen.textContent.length != 1) ? screen.textContent.slice(0,screen.textContent.length-1) : "0"  ;
                     total = parseFloat(screen.textContent);
                     isNewEntry = true;
-                    console.log(total);
-                    expression.textContent = (screen.textContent == "0" ) ? "":screen.textContent;
+
                     deleteElement.querySelector('.waveButton').classList.add('ripple');
                 }
 
                 //some boring css ripple animation
                 const waveButtons = document.querySelectorAll('.waveButton');
-                console.log(waveButtons);
                 waveButtons.forEach(waveButton => waveButton.addEventListener('animationend',function(){
                     this.classList.remove('ripple');
                 }));
